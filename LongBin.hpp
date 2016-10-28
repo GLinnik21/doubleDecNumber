@@ -24,10 +24,14 @@ public:
     LongBin(deque<short>);
     LongBin(string);
     LongBin(int);
-    friend void setString(LongBin& ,string);
-    friend string getString(LongBin&);
+    
+    
     LongBin operator+(const LongBin&);
     void operator+=(const LongBin&);
+    void operator>>(int);
+    void operator<<(int);
+
+friend string getString(LongBin&);
 };
 
 #endif /* LongBin_hpp */
