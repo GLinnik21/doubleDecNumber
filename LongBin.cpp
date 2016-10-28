@@ -112,7 +112,20 @@ deque<short> LongBin::adding(deque<short>& a, const deque<short>& b) {
     return biggerDeque;
 }
 
-    
-    
-    
-    
+string LongBin::getBin() {
+    string str;
+    for (int i = 0; i < binDeque.size(); i++) {
+        str.push_back((char)('0' + binDeque[i]));
+    }
+    return str;
+}
+
+unsigned long long int LongBin::getDec() {
+    char str[binDeque.size()];
+    for (int i = 0; i < binDeque.size(); i++) {
+        str[i] = ((char)('0' + binDeque[i]));
+    }
+    return strtoull(str ,NULL ,2);
+}
+
+

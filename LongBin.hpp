@@ -10,6 +10,7 @@
 #define LongBin_hpp
 
 #include <stdio.h>
+#include <cstdlib>
 #include <string>
 #include <deque>
 
@@ -35,7 +36,8 @@ public:
     void operator>>(int);
     void operator<<(int);
 
-    string getString(LongBin&);
+    unsigned long long int getDec();
+    string getBin();
 };
 
 #endif /* LongBin_hpp */
