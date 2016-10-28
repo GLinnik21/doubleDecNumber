@@ -18,14 +18,16 @@ using namespace std;
 class LongBin {
 private:
     deque<short> binDeque;
-    deque<short> adding(deque<short>&, deque<short>&);
+    deque<short> adding(deque<short>&, const deque<short>&);
 public:
     LongBin();
     LongBin(deque<short>);
+    LongBin(string);
+    LongBin(int);
     friend void setString(LongBin& ,string);
     friend string getString(LongBin&);
-    LongBin operator+(LongBin);
-    void operator+=(LongBin);
+    LongBin operator+(const LongBin&);
+    void operator+=(const LongBin&);
 };
 
 #endif /* LongBin_hpp */

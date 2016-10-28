@@ -10,16 +10,28 @@
 
 LongBin::LongBin() {}
 LongBin::LongBin(deque<short> d): binDeque(d){}
+LongBin::LongBin(string s) {
+    for (int i = 0; i < s.size(); i++) {
+        binDeque.push_back(s[i] == '0' ? 0 : 1);
+    }
+}
+LongBin::LongBin(int i) {
+    do {
+        int digit = i % 10;
+        binDeque.push_back(digit);
+        i /= 10;
+    } while (i > 0);
+}
 
-LongBin LongBin::operator+(LongBin add) {
+LongBin LongBin::operator+(const LongBin& add) {
     return adding(binDeque, add.binDeque);
 }
 
-void LongBin::operator+=(LongBin add) {
+void LongBin::operator+=(const LongBin& add) {
     binDeque = adding(binDeque, add.binDeque);
 }
 
-deque<short> LongBin::adding(deque<short>& a, deque<short>& b) {
+deque<short> LongBin::adding(deque<short>& a, const deque<short>& b) {
     deque<short> biggerDeque, smallerDeque;
     
     if (a.size() > b.size()) {
