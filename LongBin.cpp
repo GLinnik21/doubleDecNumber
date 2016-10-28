@@ -23,8 +23,8 @@ LongBin LongBin::operator+(LongBin add) {
         smallerDeque = binDeque;
     }
     
-    for (int i = (int)smallerDeque.size() - 1; i >= 0; i--) {
-        biggerDeque[i] += smallerDeque[i];
+    for (short i = smallerDeque.size() - 1, j = biggerDeque.size() - 1; i >= 0; i--, j--) {
+        biggerDeque[j] += smallerDeque[i];
     }
     
     for (int i = (int)biggerDeque.size() - 1; i >= 0; i--) {
