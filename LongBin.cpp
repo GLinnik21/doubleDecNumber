@@ -16,10 +16,10 @@ LongBin LongBin::operator+(LongBin add) {
     deque<short> biggerDeque, smallerDeque;
     
     if (binDeque.size() > add.binDeque.size()) {
-        binDeque = binDeque;
+        biggerDeque = binDeque;
         smallerDeque = add.binDeque;
     } else {
-        binDeque = add.binDeque;
+        biggerDeque = add.binDeque;
         smallerDeque = binDeque;
     }
     
@@ -29,7 +29,7 @@ LongBin LongBin::operator+(LongBin add) {
     
     for (int i = (int)biggerDeque.size() - 1; i >= 0; i--) {
         if (biggerDeque[i] > 1) {
-            if (i - 1 < 0) {biggerDeque.push_front(0); i++;}
+            if (i == 0) {biggerDeque.push_front(0); i++;}
             biggerDeque[i - 1] += 1;
             biggerDeque[i] -= 2;
         }
