@@ -18,7 +18,7 @@ LongBin::LongBin(string s) {
 LongBin::LongBin(int i) {
     do {
         int digit = i % 10;
-        binDeque.push_back(digit);
+        binDeque.push_front(digit);
         i /= 10;
     } while (i > 0);
 }
