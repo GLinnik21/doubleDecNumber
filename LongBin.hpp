@@ -23,15 +23,19 @@ public:
     LongBin();
     LongBin(deque<short>);
     LongBin(string);
+    LongBin(const char* s);
     LongBin(int);
-    
     
     LongBin operator+(const LongBin&);
     void operator+=(const LongBin&);
+    
+    LongBin operator+(int);
+    void operator+=(int);
+    
     void operator>>(int);
     void operator<<(int);
 
-friend string getString(LongBin&);
+    string getString(LongBin&);
 };
 
 #endif /* LongBin_hpp */

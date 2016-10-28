@@ -18,6 +18,16 @@ LongBin::LongBin(string s) {
         binDeque.push_back(s[i] == '0' ? 0 : 1);
     }
 }
+LongBin::LongBin(const char* s) {
+    int i = 0;
+    while (s[i] > ('0' - 1)) {
+        if (s[i] != '0' && s[i] != '1') {
+            throw "Initialization with wrong number! Constructor accepts only base2";
+        }
+        binDeque.push_back(s[i] == '0' ? 0 : 1);
+        i++;
+    }
+}
 LongBin::LongBin(int i) {
     do {
         int digit = i % 10;
@@ -30,11 +40,39 @@ LongBin::LongBin(int i) {
 }
 
 LongBin LongBin::operator+(const LongBin& add) {
-    return adding(binDeque, add.binDeque);
+    LongBin brandNew = adding(binDeque, add.binDeque);
+    return brandNew;
 }
 
 void LongBin::operator+=(const LongBin& add) {
     binDeque = adding(binDeque, add.binDeque);
+}
+
+LongBin LongBin::operator+(int add) {
+    deque<short> tempDeque;
+    do {
+        int digit = add % 10;
+        if (digit != 0 && digit != 1) {
+            throw "Initialization with wrong number! Constructor accepts only base2";
+        }
+        add /= 10;
+        tempDeque.push_front(digit);
+    } while (add > 0);
+    LongBin brandNew = adding(binDeque, tempDeque);
+    return brandNew;
+}
+
+void LongBin::operator+=(int add) {
+    deque<short> tempDeque;
+    do {
+        int digit = add % 10;
+        if (digit != 0 && digit != 1) {
+            throw "Initialization with wrong number! Constructor accepts only base2";
+        }
+        add /= 10;
+        tempDeque.push_front(digit);
+    } while (add > 0);
+    binDeque = adding(binDeque, tempDeque);
 }
 
 void LongBin::operator<<(int shift) {
