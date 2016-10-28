@@ -18,6 +18,7 @@ using namespace std;
 class LongBin {
 private:
     deque<short> binDeque;
+    deque<short> adding(deque<short>&, deque<short>&);
 public:
     LongBin();
     LongBin(deque<short>);

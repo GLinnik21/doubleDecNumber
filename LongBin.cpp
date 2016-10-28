@@ -12,15 +12,22 @@ LongBin::LongBin() {}
 LongBin::LongBin(deque<short> d): binDeque(d){}
 
 LongBin LongBin::operator+(LongBin add) {
-    
+    return adding(binDeque, add.binDeque);
+}
+
+void LongBin::operator+=(LongBin add) {
+    binDeque = adding(binDeque, add.binDeque);
+}
+
+deque<short> LongBin::adding(deque<short>& a, deque<short>& b) {
     deque<short> biggerDeque, smallerDeque;
     
-    if (binDeque.size() > add.binDeque.size()) {
-        biggerDeque = binDeque;
-        smallerDeque = add.binDeque;
+    if (a.size() > b.size()) {
+        biggerDeque = a;
+        smallerDeque = b;
     } else {
-        biggerDeque = add.binDeque;
-        smallerDeque = binDeque;
+        biggerDeque = b;
+        smallerDeque = a;
     }
     
     for (short i = smallerDeque.size() - 1, j = biggerDeque.size() - 1; i >= 0; i--, j--) {
@@ -35,11 +42,10 @@ LongBin LongBin::operator+(LongBin add) {
         }
     }
     
-    LongBin brandNew(biggerDeque);
-    
-    return brandNew;
+    return biggerDeque;
 }
 
-void LongBin::operator+=(LongBin add) {
-    //this -> binString += add.binString;
-}
+    
+    
+    
+    
