@@ -6,7 +6,7 @@
 //  Copyright © 2016 Linkin Industris. All rights reserved.
 //
 
-#include "LongBin.hpp"
+#include "LongBin.h"
 
 LongBin::LongBin() {}
 LongBin::LongBin(deque<short> d): binDeque(d){}

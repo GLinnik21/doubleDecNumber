@@ -6,8 +6,8 @@
 //  Copyright © 2016 Linkin Industris. All rights reserved.
 //
 
-#ifndef LongBin_hpp
-#define LongBin_hpp
+#ifndef LongBin_h
+#define LongBin_h
 
 #include <stdio.h>
 #include <cstdlib>
