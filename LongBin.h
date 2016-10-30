@@ -13,17 +13,17 @@
 #include <cstdlib>
 #include <string>
 #include <cstring>
-#include <deque>
+#include <vector>
 
 using namespace std;
 
 class LongBin {
 private:
-    deque<short> binDeque;
-    deque<short> adding(deque<short>&, const deque<short>&);
+    vector<short> binDeque;
+    vector<short> adding(vector<short>&, const vector<short>&);
 public:
     LongBin();
-    LongBin(deque<short>);
+    LongBin(vector<short>);
     LongBin(string);
     LongBin(const char* s);
     LongBin(int);

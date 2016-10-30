@@ -9,7 +9,7 @@
 #include "LongBin.h"
 
 LongBin::LongBin() {}
-LongBin::LongBin(deque<short> d): binDeque(d){}
+LongBin::LongBin(vector<short> d): binDeque(d){}
 LongBin::LongBin(string s) {
     for (int i = 0; i < s.size(); i++) {
         if (s[i] != '0' && s[i] != '1') {
@@ -32,7 +32,7 @@ LongBin::LongBin(int i) {
         if (digit != 0 && digit != 1) {
             throw "Initialization with wrong number! Constructor accepts only base2";
         }
-        binDeque.push_front(digit);
+        binDeque.insert(binDeque.begin(), digit);
         i /= 10;
     } while (i > 0);
 }
@@ -47,28 +47,28 @@ void LongBin::operator+=(const LongBin& add) {
 }
 
 LongBin LongBin::operator+(int add) {
-    deque<short> tempDeque;
+    vector<short> tempDeque;
     do {
         int digit = add % 10;
         if (digit != 0 && digit != 1) {
             throw "Initialization with wrong number! Constructor accepts only base2";
         }
         add /= 10;
-        tempDeque.push_front(digit);
+        tempDeque.insert(tempDeque.begin(), digit);
     } while (add > 0);
     LongBin brandNew = adding(binDeque, tempDeque);
     return brandNew;
 }
 
 void LongBin::operator+=(int add) {
-    deque<short> tempDeque;
+    vector<short> tempDeque;
     do {
         int digit = add % 10;
         if (digit != 0 && digit != 1) {
             throw "Initialization with wrong number! Constructor accepts only base2";
         }
         add /= 10;
-        tempDeque.push_front(digit);
+        tempDeque.insert(tempDeque.begin(), digit);
     } while (add > 0);
     binDeque = adding(binDeque, tempDeque);
 }
@@ -84,8 +84,8 @@ void LongBin::operator>>(int shift) {
     binDeque.erase(binDeque.end() - shift, binDeque.end());
 }
 
-deque<short> LongBin::adding(deque<short>& a, const deque<short>& b) {
-    deque<short> biggerDeque, smallerDeque;
+vector<short> LongBin::adding(vector<short>& a, const vector<short>& b) {
+    vector<short> biggerDeque, smallerDeque;
     
     if (a.size() > b.size()) {
         biggerDeque = a;
@@ -95,13 +95,13 @@ deque<short> LongBin::adding(deque<short>& a, const deque<short>& b) {
         smallerDeque = a;
     }
 
-    for (int i = smallerDeque.size() - 1, j = biggerDeque.size() - 1; i >= 0; i--, j--) {
+    for (int i = (int)smallerDeque.size() - 1, j = (int)biggerDeque.size() - 1; i >= 0; i--, j--) {
         biggerDeque[j] += smallerDeque[i];
     }
     
     for (int i = (int)biggerDeque.size() - 1; i >= 0; i--) {
         if (biggerDeque[i] > 1) {
-            if (i == 0) {biggerDeque.push_front(0); i++;}
+            if (i == 0) {biggerDeque.insert(biggerDeque.begin(), 0); i++;}
             biggerDeque[i - 1] += 1;
             biggerDeque[i] -= 2;
         }
