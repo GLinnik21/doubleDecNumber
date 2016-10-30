@@ -96,8 +96,8 @@ deque<short> LongBin::adding(deque<short>& a, const deque<short>& b) {
         biggerDeque = b;
         smallerDeque = a;
     }
-    
-    for (short i = smallerDeque.size() - 1, j = biggerDeque.size() - 1; i >= 0; i--, j--) {
+
+    for (int i = smallerDeque.size() - 1, j = biggerDeque.size() - 1; i >= 0; i--, j--) {
         biggerDeque[j] += smallerDeque[i];
     }
     
