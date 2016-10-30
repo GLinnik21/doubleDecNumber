@@ -118,12 +118,12 @@ string LongBin::getBin() {
     return str;
 }
 
-unsigned long long int LongBin::getDec() {
+unsigned long int LongBin::getDec() {
     char str[binDeque.size()];
     for (int i = 0; i < binDeque.size(); i++) {
         str[i] = ((char)('0' + binDeque[i]));
     }
-    return strtoull(str ,NULL ,2);
+    return strtoul(str ,NULL ,2);
 }
 
 

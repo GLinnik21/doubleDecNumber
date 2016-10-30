@@ -37,7 +37,7 @@ public:
     void operator>>(int);
     void operator<<(int);
 
-    unsigned long long int getDec();
+    unsigned long int getDec();
     string getBin();
 };
 
