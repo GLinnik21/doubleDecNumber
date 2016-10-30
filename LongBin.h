@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <string>
+#include <cstring>
 #include <deque>
 
 using namespace std;
