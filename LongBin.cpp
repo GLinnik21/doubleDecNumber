@@ -19,13 +19,11 @@ LongBin::LongBin(string s) {
     }
 }
 LongBin::LongBin(const char* s) {
-    int i = 0;
-    while (s[i] > ('0' - 1)) {
+    for (int i = 0; i < strlen(s); i++) {
         if (s[i] != '0' && s[i] != '1') {
             throw "Initialization with wrong number! Constructor accepts only base2";
         }
         binDeque.push_back(s[i] == '0' ? 0 : 1);
-        i++;
     }
 }
 LongBin::LongBin(int i) {
