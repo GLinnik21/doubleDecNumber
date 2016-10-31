@@ -30,7 +30,7 @@ int main() {
     for (k = 4; answer < 20000; k++) {
         //Формиируем Ak из Ck - 1
         for (int i = 0; i < Cki; i++) {
-            if (Ck[i].getBin().size() > k) {
+            if (Ck[i].getBin().size() >= k) {
                 if (Ck[i].getKBit(k) == 0) {
                     Ak[ABki] = Ck[i];
                     ABki++;
