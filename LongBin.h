@@ -31,12 +31,13 @@ public:
     LongBin operator+(const LongBin&);
     void operator+=(const LongBin&);
     
-    LongBin operator+(int);
-    void operator+=(int);
+    LongBin operator+(const int);
+    void operator+=(const int);
     
     void operator>>(int);
     void operator<<(int);
 
+    int getKBit(int);
     unsigned long int getDec();
     string getBin();
 };

@@ -46,28 +46,30 @@ void LongBin::operator+=(const LongBin& add) {
     binDeque = adding(binDeque, add.binDeque);
 }
 
-LongBin LongBin::operator+(int add) {
+LongBin LongBin::operator+(const int add) {
+    int tempInt = add;
     deque<short> tempDeque;
     do {
         int digit = add % 10;
         if (digit != 0 && digit != 1) {
             throw "Initialization with wrong number! Constructor accepts only base2";
         }
-        add /= 10;
+        tempInt /= 10;
         tempDeque.push_front(digit);
     } while (add > 0);
     LongBin brandNew = adding(binDeque, tempDeque);
     return brandNew;
 }
 
-void LongBin::operator+=(int add) {
+void LongBin::operator+=(const int add) {
+    int tempInt = add;
     deque<short> tempDeque;
     do {
         int digit = add % 10;
         if (digit != 0 && digit != 1) {
             throw "Initialization with wrong number! Constructor accepts only base2";
         }
-        add /= 10;
+        tempInt /= 10;
         tempDeque.push_front(digit);
     } while (add > 0);
     binDeque = adding(binDeque, tempDeque);
@@ -108,6 +110,10 @@ deque<short> LongBin::adding(deque<short>& a, const deque<short>& b) {
     }
     
     return biggerDeque;
+}
+
+int LongBin::getKBit(int k) {
+    return binDeque[(int)binDeque.size() - k];
 }
 
 string LongBin::getBin() {

@@ -7,12 +7,13 @@
 //
 
 #include <iostream>
+#include <math.h>
 #include "LongBin.h"
 
 using namespace std;
 
 int main() {
-    /*int n;
+    int n;
     cin >> n;
     clock_t tStart = clock();
     int sum = 0, dec;
@@ -36,12 +37,7 @@ int main() {
             sum++;
         }
     }
-    cout << bin << "\nExecutional time: " << (double)(clock() - tStart)/CLOCKS_PER_SEC << "s" << endl;*/
-
-    LongBin a = 11010110;
-
-    cout << a.getBin() << endl << a.getDec() << endl;
-    //cout << sizeof(unsigned long long int) << endl;
+    cout << bin << "\nExecutional time: " << (double)(clock() - tStart)/CLOCKS_PER_SEC << "s" << endl;
     
     return 0;
 }
