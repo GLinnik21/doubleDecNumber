@@ -12,11 +12,10 @@
 
 using namespace std;
 
-LongBin powIntToBin (int);
-
-int main() {
-    LongBin Ak[1000], Bk[1000], Ck[1000];
-    int ABki = 0, Cki = 8, k = 4, answer = 7;
+int main()
+{
+    LongBin Ak[1000], Bk[1000], Ck[1000],c=1111101000;
+    int ABki = 0, Cki = 8, k = 4, answer = 7, m = 0;
     
     Ck[0] = 0;
     Ck[1] = 1;
@@ -27,41 +26,49 @@ int main() {
     Ck[6] = 1101110;
     Ck[7] = 1101111;
     
-    for (k = 4; answer < 20000; k++) {
-        //Формиируем Ak из Ck - 1
-        for (int i = 0; i < Cki; i++) {
-            if (Ck[i].getBin().size() > k) {
-                if (Ck[i].getKBit(k) == 0) {
+    //Формиируем Ak из Ck - 1
+    int number;
+    
+    cout << "Введите n:";
+    cin >> number;
+    
+    for (k = 4; answer < number; k++)
+    {
+        for (int i = 0; i < Cki; i++)
+        {
+            if (Ck[i].getBin().size() >= k)
+            {
+                if (Ck[i].getKBit(k) == 0)
+                {
                     Ak[ABki] = Ck[i];
                     ABki++;
                 }
-            } else {
+            }
+            else
+            {
                 Ak[ABki] = Ck[i];
                 ABki++;
             }
         }
         //Формируем Bk из Ak
-        for (int i = 0; i < ABki; i++) {
-            Bk[i] = Ak[i] + powIntToBin(k - 1);
+        for (int i = 0; i < ABki; i++)
+        {
+            Bk[i] = Ak[i] + c;
             answer++;
         }
         //Формируем Ck
-        for (int i = 0; i < ABki; i++) {
+        for (int i = 0; i < ABki; i++)
+        {
             Ck[i] = Ak[i];
         }
-        for (int i = ABki; i < 2 * ABki; i++) {
+        for (int i = ABki; i < 2 * ABki; i++)
+        {
             Ck[i] = Bk[i - ABki];
         }
-    }
-    cout << answer << endl;
-    cout << Bk[answer - 20000].getBin() << endl;
-    return 0;
-}
-
-LongBin powIntToBin (int k) {
-    LongBin c = 1010;
-    for (int i = 1; i < k; i++) {
+        m = ABki;
+        ABki = 0;
         c = (c << 3) + (c << 1);
     }
-    return c;
+    cout << Bk[m - 1 - (answer - number)].getBin() << " " << Bk[m - 1 - (answer - number)].getDec() <<endl;
+    return 0;
 }
