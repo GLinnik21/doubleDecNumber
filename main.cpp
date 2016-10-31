@@ -10,13 +10,12 @@
 #include <cstdlib>
 #include <math.h>
 #include <time.h>
-#include "LongBin.hpp"
 
 using namespace std;
 
 
 int main() {
-    /*int n;
+    int n;
     cin >> n;
     clock_t tStart = clock();
     int sum = 0, dec;
@@ -40,7 +39,7 @@ int main() {
             sum++;
         }
     }
-    cout << bin << "\nExecutional time: " << (double)(clock() - tStart)/CLOCKS_PER_SEC << "s" << endl;*/
+    cout << bin << "\nExecutional time: " << (double)(clock() - tStart)/CLOCKS_PER_SEC << "s" << endl;
     
     return 0;
 }

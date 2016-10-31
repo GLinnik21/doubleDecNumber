@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED52D73A1DC3C04500D3994D /* LongBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED52D7371DC3C04500D3994D /* LongBin.cpp */; };
 		ED52D73B1DC3C04500D3994D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED52D7391DC3C04500D3994D /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +24,6 @@
 
 /* Begin PBXFileReference section */
 		ED0271AE1DC0D13C0054B374 /* Dop*Task1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Dop*Task1"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED52D7371DC3C04500D3994D /* LongBin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LongBin.cpp; sourceTree = SOURCE_ROOT; };
-		ED52D7381DC3C04500D3994D /* LongBin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LongBin.hpp; sourceTree = SOURCE_ROOT; };
 		ED52D7391DC3C04500D3994D /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -60,8 +57,6 @@
 		ED0271B01DC0D13C0054B374 /* Dop*Task1 */ = {
 			isa = PBXGroup;
 			children = (
-				ED52D7371DC3C04500D3994D /* LongBin.cpp */,
-				ED52D7381DC3C04500D3994D /* LongBin.hpp */,
 				ED52D7391DC3C04500D3994D /* main.cpp */,
 			);
 			path = "Dop*Task1";
@@ -125,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED52D73B1DC3C04500D3994D /* main.cpp in Sources */,
-				ED52D73A1DC3C04500D3994D /* LongBin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
