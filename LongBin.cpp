@@ -75,15 +75,19 @@ void LongBin::operator+=(const int add) {
     binDeque = adding(binDeque, tempDeque);
 }
 
-void LongBin::operator<<(int shift) {
+LongBin LongBin::operator<<(int shift) {
+    LongBin brandNew = *this;
     while (shift > 0) {
-        binDeque.push_back(0);
+        brandNew.binDeque.push_back(0);
         shift--;
     }
+    return brandNew;
 }
 
-void LongBin::operator>>(int shift) {
-    binDeque.erase(binDeque.end() - shift, binDeque.end());
+LongBin LongBin::operator>>(int shift) {
+    LongBin brandNew = *this;
+    binDeque.erase(brandNew.binDeque.end() - shift, brandNew.binDeque.end());
+    return brandNew;
 }
 
 deque<short> LongBin::adding(deque<short>& a, const deque<short>& b) {

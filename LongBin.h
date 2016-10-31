@@ -34,8 +34,8 @@ public:
     LongBin operator+(const int);
     void operator+=(const int);
     
-    void operator>>(int);
-    void operator<<(int);
+    LongBin operator>>(int);
+    LongBin operator<<(int);
 
     int getKBit(int);
     unsigned long int getDec();
