@@ -27,7 +27,11 @@ int main() {
     Ck[6] = 1101110;
     Ck[7] = 1101111;
     
-    for (k = 4; answer < 20000; k++) {
+    int number;
+    cout << "Enter n :";
+    cin >> number;
+    
+    for (k = 4; answer < number; k++) {
         //Формиируем Ak из Ck - 1
         for (int i = 0; i < Cki; i++) {
             if (Ck[i].getBin().size() >= k) {
@@ -54,7 +58,7 @@ int main() {
         }
     }
     cout << answer << endl;
-    cout << Bk[answer - 20000].getBin() << endl;
+    cout << Bk[ABki - 1 + number - answer].getBin() << " " << Bk[ABki - 1 + number - answer].getDec() <<endl;
     return 0;
 }
 
