@@ -90,7 +90,7 @@ int main() {
     }
     
     cout <<  Bk[m - 1 - (answer - number)].getDec() << endl;
-    cout << "Executional time: " << (double)(clock() - tStart)/CLOCKS_PER_SEC << "s" << endl;
+    cout << "Execution time: " << (double)(clock() - tStart)/CLOCKS_PER_SEC << "s" << endl;
     return 0;
 }
 
