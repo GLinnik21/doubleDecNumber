@@ -26,7 +26,7 @@ public:
     LongBin();
     LongBin(deque<short>);
     LongBin(string);
-    LongBin(const char* s);
+    LongBin(const char*);
     LongBin(int);
     
     LongBin operator+(const LongBin&);
