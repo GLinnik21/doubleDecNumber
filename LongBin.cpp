@@ -132,6 +132,7 @@ string LongBin::getBin() {
 }
 
 string LongBin::getDec() {
+    decDeque = {0};
     deque<short> powerDeque = {1};
     for (int i = (int)binDeque.size() - 1; i >= 0; i--) {
         if (binDeque[i]) {
