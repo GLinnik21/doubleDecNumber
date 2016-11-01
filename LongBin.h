@@ -20,7 +20,8 @@ using namespace std;
 class LongBin {
 private:
     deque<short> binDeque;
-    deque<short> adding(deque<short>&, const deque<short>&);
+    deque<short> decDeque = {0};
+    deque<short> adding(deque<short>&, const deque<short>&, int);
 public:
     LongBin();
     LongBin(deque<short>);
@@ -38,7 +39,7 @@ public:
     LongBin operator<<(int);
 
     int getKBit(int);
-    unsigned long int getDec();
+    string getDec();
     string getBin();
 };
 

@@ -38,12 +38,12 @@ LongBin::LongBin(int i) {
 }
 
 LongBin LongBin::operator+(const LongBin& add) {
-    LongBin brandNew = adding(binDeque, add.binDeque);
+    LongBin brandNew = adding(binDeque, add.binDeque, 2);
     return brandNew;
 }
 
 void LongBin::operator+=(const LongBin& add) {
-    binDeque = adding(binDeque, add.binDeque);
+    binDeque = adding(binDeque, add.binDeque, 2);
 }
 
 LongBin LongBin::operator+(const int add) {
@@ -57,7 +57,7 @@ LongBin LongBin::operator+(const int add) {
         tempInt /= 10;
         tempDeque.push_front(digit);
     } while (add > 0);
-    LongBin brandNew = adding(binDeque, tempDeque);
+    LongBin brandNew = adding(binDeque, tempDeque, 2);
     return brandNew;
 }
 
@@ -72,7 +72,7 @@ void LongBin::operator+=(const int add) {
         tempInt /= 10;
         tempDeque.push_front(digit);
     } while (add > 0);
-    binDeque = adding(binDeque, tempDeque);
+    binDeque = adding(binDeque, tempDeque, 2);
 }
 
 LongBin LongBin::operator<<(int shift) {
@@ -90,9 +90,10 @@ LongBin LongBin::operator>>(int shift) {
     return brandNew;
 }
 
-deque<short> LongBin::adding(deque<short>& a, const deque<short>& b) {
+deque<short> LongBin::adding(deque<short>& a, const deque<short>& b, int base) {
     deque<short> biggerDeque, smallerDeque;
     
+    //Find longer number
     if (a.size() > b.size()) {
         biggerDeque = a;
         smallerDeque = b;
@@ -100,16 +101,18 @@ deque<short> LongBin::adding(deque<short>& a, const deque<short>& b) {
         biggerDeque = b;
         smallerDeque = a;
     }
-
+    
+    //Adding by decimal bit
     for (int i = (int)smallerDeque.size() - 1, j = (int)biggerDeque.size() - 1; i >= 0; i--, j--) {
         biggerDeque[j] += smallerDeque[i];
     }
     
+    //Perebroska
     for (int i = (int)biggerDeque.size() - 1; i >= 0; i--) {
-        if (biggerDeque[i] > 1) {
+        if (biggerDeque[i] > (base - 1)) {
             if (i == 0) {biggerDeque.push_front(0); i++;}
             biggerDeque[i - 1] += 1;
-            biggerDeque[i] -= 2;
+            biggerDeque[i] -= base;
         }
     }
     
@@ -128,12 +131,19 @@ string LongBin::getBin() {
     return str;
 }
 
-unsigned long int LongBin::getDec() {
-    char str[binDeque.size()];
-    for (int i = 0; i < binDeque.size(); i++) {
-        str[i] = ((char)('0' + binDeque[i]));
+string LongBin::getDec() {
+    deque<short> powerDeque = {1};
+    for (int i = (int)binDeque.size() - 1; i >= 0; i--) {
+        if (binDeque[i]) {
+            decDeque = adding(decDeque, powerDeque, 10);
+        }
+        powerDeque = adding(powerDeque, powerDeque, 10);
     }
-    return strtoul(str ,NULL ,2);
+    string decString;
+    for (int i = 0; i < decDeque.size(); i++) {
+        decString += (char)((short)'0' + decDeque[i]);
+    }
+    return decString;
 }
 
 
