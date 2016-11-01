@@ -21,7 +21,7 @@ int main() {
     int sum = 0, dec;
     unsigned long int bin = 0;
     
-    for (int i = 0; n > sum; i++) {
+    for (int i = 1; n > sum; i++) {
         dec = i;
         bin = 0;
         for (int j = 0; dec > 0; j++) {
