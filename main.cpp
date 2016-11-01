@@ -9,11 +9,11 @@
 #include <iostream>
 #include <math.h>
 #include "LongBin.h"
+#include <ctime>
 
 using namespace std;
 
-int main()
-{
+int main() {
     LongBin Ak[1000], Bk[1000], Ck[1000],c=1111101000;
     int ABki = 0, Cki = 8, k = 4, answer = 7, m = 0;
     
@@ -26,49 +26,40 @@ int main()
     Ck[6] = 1101110;
     Ck[7] = 1101111;
     
-    //Формиируем Ak из Ck - 1
-    int number;
+    int number, i;
     
-    cout << "Введите n:";
+    cout << "Enter n:";
     cin >> number;
     
-    for (k = 4; answer < number; k++)
-    {
-        for (int i = 0; i < Cki; i++)
-        {
-            if (Ck[i].getBin().size() >= k)
-            {
-                if (Ck[i].getKBit(k) == 0)
-                {
+    clock_t tStart = clock();
+    for (k = 4; answer < number; k++) {
+        for (i = 0; i < Cki; i++) {
+            if (Ck[i].getBin().size() >= k) {
+                if (Ck[i].getKBit(k) == 0) {
                     Ak[ABki] = Ck[i];
+                    Bk[ABki] = Ak[ABki] + c;
+                    answer++;
                     ABki++;
                 }
-            }
-            else
-            {
+            } else {
                 Ak[ABki] = Ck[i];
+                Bk[ABki] = Ak[ABki] + c;
+                answer++;
                 ABki++;
             }
         }
-        //Формируем Bk из Ak
-        for (int i = 0; i < ABki; i++)
-        {
-            Bk[i] = Ak[i] + c;
-            answer++;
-        }
-        //Формируем Ck
-        for (int i = 0; i < ABki; i++)
-        {
+        for (i = 0; i < ABki; i++) {
             Ck[i] = Ak[i];
-        }
-        for (int i = ABki; i < 2 * ABki; i++)
-        {
-            Ck[i] = Bk[i - ABki];
+            Ck[i+ABki]=Bk[i];
         }
         m = ABki;
+        Cki = 2 * ABki;
         ABki = 0;
+        //Devision by 10
         c = (c << 3) + (c << 1);
     }
-    cout << Bk[m - 1 - (answer - number)].getBin() << " " << Bk[m - 1 - (answer - number)].getDec() <<endl;
+    
+    cout <<  Bk[m - 1 - (answer - number)].getDec() << endl;
+    cout << "Executional time: " << (double)(clock() - tStart)/CLOCKS_PER_SEC << "s" << endl;
     return 0;
 }
