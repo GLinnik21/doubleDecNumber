@@ -7,12 +7,6 @@
 //
 
 #include <iostream>
-#include <math.h>
-#include <ctime>
-#include <stdio.h>
-#include <cstdlib>
-#include <string>
-#include <cstring>
 #include <deque>
 
 using namespace std;
@@ -45,8 +39,8 @@ public:
 
 int main() {
     LongBin Ak[1000], Bk[1000], Ck[1000],c=1111101000;
-    int ABki = 0, Cki = 8, k = 4, answer = 7, m = 0;
-    
+    int ABki = 0, Cki = 8, answer = 7, k, m = 0;
+
     Ck[0] = 0;
     Ck[1] = 1;
     Ck[2] = 1010;
@@ -101,7 +95,7 @@ LongBin::LongBin(string s) {
         if (s[i] != '0' && s[i] != '1') {
             throw "Initialization with wrong number! Constructor accepts only base2";
         }
-        binDeque.push_back(s[i] == '0' ? 0 : 1);
+        binDeque.push_back((short)(s[i] == '0' ? 0 : 1));
     }
 }
 LongBin::LongBin(const char* s) {
