@@ -56,7 +56,7 @@ LongBin LongBin::operator+(const int add) {
         }
         tempInt /= 10;
         tempDeque.push_front(digit);
-    } while (add > 0);
+    } while (tempInt > 0);
     LongBin brandNew = adding(binDeque, tempDeque, 2);
     return brandNew;
 }
@@ -71,7 +71,7 @@ void LongBin::operator+=(const int add) {
         }
         tempInt /= 10;
         tempDeque.push_front(digit);
-    } while (add > 0);
+    } while (tempInt > 0);
     binDeque = adding(binDeque, tempDeque, 2);
 }
 
